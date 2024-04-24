@@ -1,0 +1,59 @@
+<section class="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="max-w-screen-sm mb-8 lg:mb-16">
+      <h2
+        class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+      >
+        {{ authObj?.name }}
+      </h2>
+    </div>
+  </div>
+
+  <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16 p-3">
+      <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
+        <img
+          class="w-full"
+          src="../../../../../assets/img/office-man.png"
+          alt=""
+        />
+      </div>
+
+      <div class="mt-6 sm:mt-8 lg:mt-0">
+        <ul>
+          <li>
+            <h1 class="text-xl text-gray-900 sm:text-2xl dark:text-white">
+              Birth date : {{ authObj?.birth_date }}
+            </h1>
+          </li>
+
+          <li>
+            <h2 class="text-md text-gray-900 sm:text-2xl dark:text-white">
+              Top work : {{ authObj?.top_work }}
+            </h2>
+          </li>
+
+          <li>
+            <h2 class="text-md text-gray-900 sm:text-2xl dark:text-white">
+              Work Count: {{ authObj?.work_count }}
+            </h2>
+          </li>
+
+          <li>
+            <h2 class="text-md text-gray-900 sm:text-2xl dark:text-white">
+              {{ "Top subject of the Author" }}
+            </h2>
+          </li>
+        </ul>
+
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"
+        >
+          <li *ngFor="let subject of authObj?.top_subjects">
+            {{ subject }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

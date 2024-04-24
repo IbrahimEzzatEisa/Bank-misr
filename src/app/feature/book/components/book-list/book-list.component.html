@@ -4,61 +4,19 @@
       <h2
         class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
       >
-        Finance
+        {{ title }}
       </h2>
     </div>
     <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
       <ng-container *ngFor="let books of books_list">
-        <div
-          class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 border-dark-700 p-3"
-        >
-          <a class="p-2">
-            <img
-              [routerLink]="['/books/view', books?.id]"
-              class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-              [src]="books?.img"
-              alt="Bonnie Avatar"
-            />
-          </a>
-          <div class="p-3">
-            <p
-              class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
-              [routerLink]="['/books/view', books?.id]"
-            >
-              {{ books?.publication }}
-            </p>
-            <p
-              class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
-              [routerLink]="['/books/view', books?.id]"
-            >
-              {{ books?.tile }}
-            </p>
-            <p
-              class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
-              [routerLink]="['/books/authors', books?.id]"
-            >
-              {{ books?.author }}
-            </p>
-
-            <ul class="flex space-x-2 mt-4 md:mt-6 justify-between">
-              <li>
-                <a
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                >
-                  more
-                </a>
-              </li>
-              <li>
-                <a
-                  [routerLink]="['/books/wish-list']"
-                  class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-                >
-                  Wishlist
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <app-book_control
+          [id]="books?.isbn[0]"
+          [img]="'../../../../../assets/img/pdf.png'"
+          [publication]="books?.first_publish_year"
+          [title]="books?.title"
+          [author]="books?.author_name[0]"
+          [wishlist]="false"
+        ></app-book_control>
       </ng-container>
     </div>
   </div>

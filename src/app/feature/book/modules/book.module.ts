@@ -9,6 +9,7 @@ import { BookRoutingModule } from './book.routing';
 import { WishListComponent } from '../components/wish-list/wish-list.component';
 import { FilterByNameAndTypePipe } from 'src/app/shell/pipes/filterByNameAndType.pipe';
 import { FormsModule } from '@angular/forms';
+import { Author_detailsComponent } from '../components/author_details/author_details.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     BookListComponent,
     Book_detailsComponent,
     WishListComponent,
+    Author_detailsComponent,
     FilterByNameAndTypePipe,
 
 

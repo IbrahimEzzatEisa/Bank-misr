@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { BookListService } from './services/book-list.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
+  // page title
+  title = 'Finance';
 
   // main array of book list
   books_list: any[] = [];
 
   // inject
-  constructor(private route: Router) { }
+  constructor(
+    private book_list_service: BookListService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
     //call main function
@@ -21,80 +27,18 @@ export class BookListComponent implements OnInit {
 
   // get data of books list
   get_All_Books() {
-    this.books_list = [
-      {
-        'id': 1,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-      {
-        'id': 2,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
+    this.spinner.show();
+    this.book_list_service.getBooks().subscribe(
+      (res) => {
+        this.books_list = res.docs;
+        this.spinner.hide();
 
-      {
-        'id': 3,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
       },
+      (err) => {
+        console.error(err);
+        this.spinner.hide();
 
-      {
-        'id': 4,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-
-      {
-        'id': 5,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-
-      {
-        'id': 6,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-
-      {
-        'id': 7,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-
-      {
-        'id': 8,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-
-      {
-        'id': 9,
-        'publication': 'Publication Year',
-        'tile': 'Book Title ',
-        'author': 'Author/s',
-        'img': '../../../../../assets/img/pdf.png',
-      },
-    ];
+      }
+    );
   }
 }
-
-
-

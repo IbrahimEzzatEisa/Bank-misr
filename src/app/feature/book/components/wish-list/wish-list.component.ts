@@ -22,10 +22,11 @@ export class WishListComponent implements OnInit {
   }
 
   //  remove  of local storage
-  removeToWishList(SelectedId) {
+  removeToWishList(SelectedBook) {
+    console.log(SelectedBook)
     // Find the index of the object you want to remove
     const indexToRemove = this.existingArray.findIndex(
-      (obj) => obj.id === SelectedId
+      (obj) => obj.title === SelectedBook
     );
 
     if (indexToRemove !== -1) {

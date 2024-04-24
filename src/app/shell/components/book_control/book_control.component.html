@@ -1,0 +1,77 @@
+<div
+  class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 border-dark-700 p-3 h-200"
+>
+  <a class="p-2">
+    <img
+      [routerLink]="['/books/view', title]"
+      class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+      [src]="img"
+      alt="Bonnie Avatar"
+    />
+  </a>
+  <div class="p-3">
+    <p
+      class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
+      [routerLink]="['/books/view', title]"
+    >
+      {{ publication }}
+    </p>
+    <p
+      class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
+      [routerLink]="['/books/view', title]"
+    >
+      {{ title }}
+    </p>
+    <p
+      class="text-gray-500 dark:text-gray-400 hover:text-gray-900 cursor-pointer"
+      [routerLink]="['/books/authors', author]"
+    >
+      {{ author }}
+    </p>
+
+    <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8" *ngIf="wishlist">
+      <a
+        (click)="RemoveWishList($event)"
+        title=""
+        class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+        role="button"
+      >
+        <svg
+          class="w-5 h-5 -ms-2 me-2"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
+          />
+        </svg>
+
+        {{ "Remove WishList" }}
+      </a>
+    </div>
+
+    <ul class="flex space-x-2 mt-4 md:mt-6 justify-between" *ngIf="!wishlist">
+      <li>
+        <a class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+          {{ more_title }}
+        </a>
+      </li>
+      <li>
+        <a
+          [routerLink]="['/books/wish-list']"
+          class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+        >
+          {{ Wishlist_title }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

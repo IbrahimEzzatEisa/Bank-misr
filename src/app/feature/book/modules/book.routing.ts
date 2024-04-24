@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { Book_detailsComponent } from '../components/book_details/book_details.component';
 import { BookListComponent } from '../components/book-list/book-list.component';
 import { WishListComponent } from '../components/wish-list/wish-list.component';
+import { Author_detailsComponent } from '../components/author_details/author_details.component';
 
 const routes: Routes = [
   {
@@ -18,18 +19,14 @@ const routes: Routes = [
 
       { path: 'list', component: BookListComponent },
       {
-        path: 'view/:id',
+        path: 'view/:bookName',
         component: Book_detailsComponent,
-        data: {
-          isAuthors: false,
-        },
+
       },
       {
-        path: 'authors/:id',
-        component: Book_detailsComponent,
-        data: {
-          isAuthors: true,
-        },
+        path: 'authors/:authorName',
+        component: Author_detailsComponent,
+
       },
 
       {
